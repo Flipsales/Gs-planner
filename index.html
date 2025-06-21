@@ -1,23 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>It works!</title>
-    <style>
-      body {
-        background-color: #f5f5f5;
-        font-family: Arial, sans-serif;
-        padding: 3rem;
-        text-align: center;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Good Soil Planner - 90-Day Discipleship Journey</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #2E7D32;
+      --secondary: #81C784;
+      --accent: #FFB74D;
+      --dark: #1B5E20;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    body {
+      background: #f8f9fa;
+      overflow-x: hidden;
+    }
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 50px;
+      background: rgba(27, 94, 32, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      color: white;
+      font-size: 1.5em;
+      font-weight: 700;
+    }
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      font-size: 4.5em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .hero-content p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+    .cta-button {
+      padding: 18px 45px;
+      font-size: 1.2em;
+      background: var(--accent);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(255, 183, 77, 0.4);
+    }
+    .cta-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(255, 183, 77, 0.6);
+    }
+    .features, .testimonials, .pricing, .faq {
+      padding: 100px 50px;
+      background: white;
+    }
+    .testimonials, .faq {
+      background: #f5f5f5;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.5em;
+      color: var(--dark);
+      margin-bottom: 50px;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--primary);
+    }
+    .feature-grid, .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .feature-card, .price-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      padding: 20px;
+      text-align: center;
+    }
+    .feature-card:hover, .price-card:hover {
+      transform: translateY(-10px);
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 50px;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
       }
-      h1 {
-        color: #2E7D32;
+      .hero-content h1 {
+        font-size: 2.5em;
       }
-    </style>
-  </head>
-  <body>
-    <h1>👋 Hello, Flip!</h1>
-    <p>Your GitHub Pages site is working 🎉</p>
-  </body>
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Video -->
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="https://cdn.coverr.co/videos/coverr-mountain-river-forest-8339/1080p.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">Good Soil Planner</div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Plant Good Habits, Grow Lasting Fruit</h1>
+      <p>A 90-day journey to spiritual growth and intentional living</p>
+      <button class="cta-button">Watch the Vision ▶</button>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="features">
+    <h2 class="section-title">How It Works</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/feature1" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <h3>Daily Planning System</h3>
+        <p>Structured daily pages for priorities, Bible reading, and habit tracking</p>
+      </div>
+      <div class="feature-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/feature2" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <h3>Weekly Review Process</h3>
+        <p>Reflect on wins, lessons learned, and spiritual growth</p>
+      </div>
+      <div class="feature-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/feature3" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <h3>Monthly Reset</h3>
+        <p>Evaluate progress and refine your plan for the next month</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="testimonials">
+    <h2 class="section-title">What Others Are Saying</h2>
+    <video class="testimonial-video" controls width="100%">
+      <source src="https://example.com/testimonial1.mp4" type="video/mp4">
+    </video>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="pricing">
+    <h2 class="section-title">Choose Your Plan</h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>One Planner</h3>
+        <div class="price">$67</div>
+        <ul>
+          <li>Personalized Goal Setting</li>
+          <li>Monthly Check-Ins</li>
+          <li>Resource Library Access</li>
+        </ul>
+        <button class="cta-button">Get Started</button>
+      </div>
+      <div class="price-card">
+        <h3>Two Planners</h3>
+        <div class="price">$49 Each</div>
+        <ul>
+          <li>Bi-Weekly Sessions</li>
+          <li>Customized Action Plans</li>
+          <li>Priority Email Support</li>
+        </ul>
+        <button class="cta-button">Get Started</button>
+      </div>
+      <div class="price-card">
+        <h3>Subscription</h3>
+        <div class="price">$47/90 Days</div>
+        <ul>
+          <li>Weekly Sessions</li>
+          <li>Comprehensive Evaluations</li>
+          <li>Exclusive Workshops</li>
+        </ul>
+        <button class="cta-button">Subscribe Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <h3>What is the Good Soil Planner?</h3>
+        <p>The Good Soil Planner is a 90-day discipleship tool designed to help you grow in faith and live intentionally.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Who is the planner for?</h3>
+        <p>Anyone looking to grow spiritually, set goals, and lead with purpose — whether in your home, church, or community.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is the planner dated?</h3>
+        <p>Nope! It’s undated so you can start anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Good Soil Planner. All rights reserved.</p>
+  </footer>
+</body>
 </html>
